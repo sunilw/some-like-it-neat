@@ -65,3 +65,7 @@ node_modules
 
 # PhpStrom Project Files #
 .idea/
+assets/css/rtl-min.css
+assets/css/rtl.css
+assets/css/style-min.css
+assets/css/style.css

@@ -28,7 +28,8 @@ var gulp 			= require('gulp'),
 	notify 			= require('gulp-notify'),
 	cmq 			= require('gulp-combine-media-queries'),
 	runSequence 	= require('gulp-run-sequence'),
-	sass 			= require('gulp-ruby-sass'), // Our Sass compiler
+	sass 			= require('gulp-sass'),
+	// sass 			= require('gulp-ruby-sass'), // Our Sass compiler
 	plugins 		= require('gulp-load-plugins')({ camelize: true }),
 	ignore 			= require('gulp-ignore'), // Helps with ignoring files and directories in our run tasks
 	rimraf 			= require('gulp-rimraf'), // Helps with removing files and directories in our run tasks
@@ -80,9 +81,16 @@ gulp.task( 'phpcs', function() {
 gulp.task('styles', function () {
 	return gulp.src([source+'sass/**/*.scss'])
 		.pipe(plumber())
-		.pipe(sass({ style: 'expanded' }))
+			.pipe(sass({
+				// outputStyle: 'compressed',
+				outputStyle: 'nested',
+				precision: 10,
+				onError: function (err) {
+					notify().write(err);
+				}
+			}))
+
 		.pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
-		.pipe(sourcemaps.write())
 		.pipe(plumber.stop())
 		.pipe(gulp.dest(source+'css'))
 		.pipe(filter('**/*.css')) // Filtering stream to only css files

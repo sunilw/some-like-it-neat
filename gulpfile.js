@@ -5,8 +5,8 @@
 */
 
 // Project configuration
-var 	project 	= 'somelikeitneat', // Project name, used for build zip.
-	url 		= 'somelikeitneat.dev', // Local Development URL for BrowserSync
+var 	project 	= 'wp1', // Project name, used for build zip.
+	url 		= 'neat', // Local Development URL for BrowserSync
 	build 		= './build/', // Files that you want to package into a zip go here
 	source 		= './assets/', 	// Your main project assets and naming 'source' instead of 'src' to avoid confusion with gulp.src
 	bower 		= './assets/bower_components/', // Not truly using this yet, more or less playing right now. TO-DO Place in Dev branch
